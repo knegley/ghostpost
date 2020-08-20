@@ -8,5 +8,10 @@
 <h1>Boast Posts</h1>
 {% for boast in boasts %}
 <p>{{boast}}</p>
+<p><strong>{{boast.vote_total}}</strong></p>
+<p>Post Date: {{boast.date}}</pp> 
+  {% if boast.is_boast %}
+  <p>Boast</p>
+  {% endif %}
 <hr />
 {% endfor %}

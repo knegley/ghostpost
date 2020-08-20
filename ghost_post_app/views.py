@@ -10,9 +10,10 @@ def add_post_view(request):
         form = AddPost(request.POST)
         if form.is_valid():
             data = form.cleaned_data
-            print(data)
+            # print(data)
+            # breakpoint()
             Post.objects.create(post=data.get(
-                "post"), boast_or_roast_choice=data.get("boast_or_roast_choice"))
+                "post"), is_boast=data.get("boast"))
 
             return HttpResponseRedirect(redirect_to=reverse("home"))
 
@@ -20,22 +21,27 @@ def add_post_view(request):
 
 
 def home_view(request):
-    posts = Post.objects.all()[::-1]
+    posts = Post.objects.order_by("-date")
     return render(request, "home.html", {"posts": posts})
 
 
 def boast_view(request):
-    boasts = [post for post in Post.objects.all(
-    ) if post.boast_or_roast_choice == "B"][::-1]
+    # boasts = [post for post in Post.objects.all(
+    # ) if post.boast_or_roast_choice == "B"][::-1]
     # boasts = Post.objects.filter(boast_or_roast_choice="B")
-    return render(request, "boast_posts.html", {"boasts": boasts})
+    posts = Post.objects.filter(
+        is_boast=True).order_by("-date")
+    return render(request, "boast_posts.html", {"boasts": posts})
 
 
 def roast_view(request):
-    roasts = [post for post in Post.objects.all(
-    ) if post.boast_or_roast_choice == "R"][::-1]
+    # roasts = [post for post in Post.objects.all(
+    # ) if post.boast_or_roast_choice == "R"][::-1]
+    posts = Post.objects.filter(
+        is_boast=False).order_by("-date")
+
     # roasts = Post.objects.filter(boast_or_roast_choice="R")
-    return render(request, "roast_posts.html", {"roasts": roasts})
+    return render(request, "roast_posts.html", {"roasts": posts})
 
 
 def sorted_view(request):

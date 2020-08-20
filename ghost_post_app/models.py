@@ -12,7 +12,8 @@ class Post(models.Model):
     up_vote = models.IntegerField(default=0)
     down_vote = models.IntegerField(default=0)
     # vote_total = models.IntegerField(default=0)
-    boast_or_roast_choice = models.CharField(choices=choices, max_length=1)
+    # boast_or_roast_choice = models.CharField(choices=choices, max_length=1)
+    is_boast = models.BooleanField()
 
     def __str__(self):
 

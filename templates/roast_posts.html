@@ -8,5 +8,10 @@
 <h1>Roast Posts</h1>
 {% for roast in roasts %}
 <p>{{roast}}</p>
+<p><strong>{{roast.vote_total}}</strong></p>
+<p>Post Date: {{roast.date}}</pp> 
+  {% if not roast.is_boast %}
+  <p>Roast</p>
+{% endif %}
 <hr />
 {% endfor %}

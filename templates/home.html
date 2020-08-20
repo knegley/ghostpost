@@ -10,10 +10,11 @@
 <p>{{post}}</p>
 <p>{{post.date}}</p>
 <p>{{post.vote_total}}</p>
-{% if not post.boast_or_roast_choice %}
-<p>neutral</p>
+{% if not post.is_boast %}
+<p>Roast</p>
+{% endif %} {% if post.is_boast %}
+<p>Boast</p>
 {% endif %}
-<p>{{post.boast_or_roast_choice}}</p>
 <!-- <form method="post" action="">
   {% csrf_token %}
   <input type="hidden" value="foo" />
