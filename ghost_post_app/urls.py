@@ -6,5 +6,5 @@ urlpatterns = [path("", views.home_view, name="home"),
                path("roast-posts", views.roast_view, name="roasts"),
                path("sorted/", views.sorted_view, name="sorted"),
                path("vote/<int:post_id>/<int:vote_value>",
-                    views.up_vote_view, name="vote")
+                    views.vote_view, name="vote")
                ]
