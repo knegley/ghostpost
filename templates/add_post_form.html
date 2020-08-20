@@ -1,0 +1,13 @@
+<nav>
+  <a href="{% url 'home' %}">Home</a>
+  <a href="{% url 'roasts' %}">Roasts</a>
+  <a href="{% url 'boasts' %}">Boasts</a>
+  <a href="{% url 'sorted' %}">Sorted</a>
+</nav>
+
+<h1>Create a Post</h1>
+
+<form method="post" action="">
+  {% csrf_token %} {{form.as_p}}
+  <input type="submit" value="Post!" />
+</form>

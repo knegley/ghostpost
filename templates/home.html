@@ -1,0 +1,27 @@
+<nav>
+  <a href="{% url 'add_post' %}">Create Post</a>
+  <a href="{% url 'roasts' %}">Roasts</a>
+  <a href="{% url 'boasts' %}">Boasts</a>
+  <a href="{% url 'sorted' %}">Sorted</a>
+</nav>
+<h1>GhostPost Post Board</h1>
+{% for post in posts%}
+
+<p>{{post}}</p>
+<p>{{post.date}}</p>
+<p>{{post.vote_total}}</p>
+{% if not post.boast_or_roast_choice %}
+<p>neutral</p>
+{% endif %}
+<p>{{post.boast_or_roast_choice}}</p>
+<!-- <form method="post" action="">
+  {% csrf_token %}
+  <input type="hidden" value="foo" />
+  <input type="submit" value="Up Vote" />
+  <input type="submit" value="Down Vote" />
+</form> -->
+<a href="vote/{{post.id}}/1"><input type="button" value="Up Vote" /></a>
+<a href="vote/{{post.id}}/0"><input type="button" value="Down Vote" /></a>
+<hr />
+
+{% endfor %}

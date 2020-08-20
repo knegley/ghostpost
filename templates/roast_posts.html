@@ -1,0 +1,12 @@
+<nav>
+  <a href="{% url 'home' %}">Home</a>
+  <a href="{% url 'add_post' %}">Create Post</a>
+  <a href="{% url 'boasts' %}">Boasts</a>
+  <a href="{% url 'sorted' %}">Sorted</a>
+</nav>
+
+<h1>Roast Posts</h1>
+{% for roast in roasts %}
+<p>{{roast}}</p>
+<hr />
+{% endfor %}
